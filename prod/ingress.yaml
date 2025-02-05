@@ -3,19 +3,11 @@ kind: Ingress
 metadata:
   name: vote
   namespace: instavote
+  annotations:
+    nginx.ingress.kubernetes.io/rewrite-target: /
 spec:
   ingressClassName: nginx
   rules:
-  - host: preview.vote.example.com  # ✅ Canary version accessible here
-    http:
-      paths:
-      - path: /
-        pathType: Prefix
-        backend:
-          service:
-            name: vote-preview  # ✅ Directs traffic to new version
-            port:
-              number: 80
   - host: vote.example.com
     http:
       paths:
@@ -24,5 +16,15 @@ spec:
         backend:
           service:
             name: vote
+            port:
+              number: 80
+  - host: vote-preview.example.com  # Separate DNS for preview traffic
+    http:
+      paths:
+      - path: /
+        pathType: Prefix
+        backend:
+          service:
+            name: vote-preview  # Send preview traffic here
             port:
               number: 80
