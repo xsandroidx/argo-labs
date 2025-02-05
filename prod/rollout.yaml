@@ -5,7 +5,6 @@ metadata:
 spec:
   replicas: 5
   strategy:
-    blueGreen: null
     canary:
       canaryService: vote-preview
       stableService: vote
@@ -15,7 +14,7 @@ spec:
       steps:
       - setCanaryScale:
           replicas: 3
-      - pause: {} 
+      - pause: {}  # ✅ Manual pause (no auto traffic shift yet)
       - setWeight: 20
       - pause:
           duration: 10s
