@@ -15,6 +15,7 @@ spec:
       steps:
       - setCanaryScale:
           replicas: 3
+      - pause: {} 
       - setWeight: 20
       - pause:
           duration: 10s

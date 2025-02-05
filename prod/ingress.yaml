@@ -6,6 +6,16 @@ metadata:
 spec:
   ingressClassName: nginx
   rules:
+  - host: preview.vote.example.com  # ✅ Canary version accessible here
+    http:
+      paths:
+      - path: /
+        pathType: Prefix
+        backend:
+          service:
+            name: vote-preview  # ✅ Directs traffic to new version
+            port:
+              number: 80
   - host: vote.example.com
     http:
       paths:
