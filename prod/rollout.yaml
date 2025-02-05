@@ -5,6 +5,7 @@ metadata:
 spec:
   replicas: 5
   strategy:
+    blueGreen: null
     canary:
       canaryService: vote-preview
       stableService: vote
