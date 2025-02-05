@@ -18,13 +18,3 @@ spec:
             name: vote
             port:
               number: 80
-  - host: vote-preview.example.com  # Separate DNS for preview traffic
-    http:
-      paths:
-      - path: /
-        pathType: Prefix
-        backend:
-          service:
-            name: vote-preview  # Send preview traffic here
-            port:
-              number: 80

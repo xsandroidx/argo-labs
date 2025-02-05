@@ -3,6 +3,7 @@ kind: Kustomization
 resources:
 - ../base
 - ingress.yaml
+- vote-preview-ingress.yaml
 namespace: prod
 commonAnnotations:
   supported-by: sre@example.com
